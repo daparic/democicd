@@ -30,4 +30,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: CpptestReports
-          path: report/*.*       
+          path: report/*.*
+      - name: 6) Clean-up temp workspace
+        run: rm -rf $a

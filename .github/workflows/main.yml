@@ -19,7 +19,7 @@ jobs:
       - name: 2.5) Create an associated workspace
         run: export a=$(mktemp -d) && cpptestcli -data $a -bdf cpptestscan.bdf && echo "a=$a" >> $GITHUB_ENV
       - name: 3) Run Parasoft static analysis
-        run: cpptestcli -data $a -config "builtin://Effective C++" -report report -property report.format=sarif -settings /tmp/cpptestcli.properties
+        run: cpptestcli -data $a -config "builtin://Effective C++" -report report -property report.format=sarif -settings /tmp/cpptestcli.properties && echo "[$a]" && rm -rf $a
       - name: 4) Upload results (SARIF)
         if: always()
         uses: github/codeql-action/upload-sarif@v2
